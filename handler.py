@@ -17,7 +17,7 @@ def s3_thumbnail_generator(event, context):
     key = event['Records'][0]['s3']['object']['key']
     img_size = event['Records'][0]['s3']['object']['size']
     
-    if (not key.endsWith("_thumbnail.png")):
+    if (not key.endswith("_thumbnail.png")):
         image=get_s3_image(bucket,key)
         thumbnail = image_to_thumbnail(image)
         thumbnail_key = new_filename(key)
